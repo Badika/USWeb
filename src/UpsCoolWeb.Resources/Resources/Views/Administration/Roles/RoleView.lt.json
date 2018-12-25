@@ -1,10 +1,10 @@
 ﻿{
-    "Titles": {
-        "Id": "Rolė",
-        "Permissions": "Teisės",
-        "Title": "Pavadinimas"
-    },
-    "Validations": {
-        "UniqueTitle": "Rolės pavadinimas jau yra naudojamas."
-    }
+  "Titles": {
+    "Id": "Role",
+    "Permissions": "Permissions",
+    "Title": "Title"
+  },
+  "Validations": {
+    "UniqueTitle": "Role title is already being used."
+  }
 }

@@ -1,7 +1,7 @@
 ﻿{
-    "Titles": {
-        "Email": "Elektroninis paštas",
-        "IsLocked": "Deaktyvuotas",
-        "Username": "Prisijungimo vardas"
-    }
+  "Titles": {
+    "Email": "Email",
+    "IsLocked": "Locked",
+    "Username": "Username"
+  }
 }

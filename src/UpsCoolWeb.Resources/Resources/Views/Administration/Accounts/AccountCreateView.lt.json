@@ -1,7 +1,7 @@
 ﻿{
-    "Titles": {
-        "Email": "Elektroninis paštas",
-        "Password": "Slaptažodis",
-        "Username": "Prisijungimo vardas"
-    }
+  "Titles": {
+    "Email": "Email",
+    "Password": "Password",
+    "Username": "Username"
+  }
 }
