@@ -1,0 +1,14 @@
+﻿<div class="alerts">
+    @foreach (Alert alert in JsonConvert.DeserializeObject<Alerts>(TempData["Alerts"] as String))
+    {
+        <div id="@alert.Id" class="alert alert-@alert.Type.ToString().ToLowerInvariant() text-center" data-timeout="@alert.Timeout">
+            <span>@alert.Message</span><span class="close">×</span>
+        </div>
+    }
+    @foreach (String message in ViewData.ModelState.SelectMany(state => state.Value.Errors).Select(error => error.ErrorMessage))
+    {
+        <div class="alert alert-danger text-center">
+            <span>@message</span><span class="close">×</span>
+        </div>
+    }
+</div>

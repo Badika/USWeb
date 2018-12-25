@@ -1,0 +1,48 @@
+﻿@model ModuleModel
+using UpsCoolWeb.Data.Core;
+using UpsCoolWeb.Objects;
+using System;
+using System.Linq;
+
+namespace UpsCoolWeb.Services
+{
+    public class @Model.Service : BaseService, @Model.IService
+    {
+        public @(Model.Service)(IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+        }
+
+        public TView Get<TView>(Int32 id) where TView : BaseView
+        {
+            return UnitOfWork.GetAs<@Model.Model, TView>(id);
+        }
+        public IQueryable<@Model.View> GetViews()
+        {
+            return UnitOfWork
+                .Select<@Model.Model>()
+                .To<@Model.View>()
+                .OrderByDescending(@Model.ModelVarName => @(Model.ModelVarName).Id);
+        }
+
+        public void Create(@Model.View view)
+        {
+            @Model.Model @Model.ModelVarName = UnitOfWork.To<@Model.Model>(view);
+
+            UnitOfWork.Insert(@Model.ModelVarName);
+            UnitOfWork.Commit();
+        }
+        public void Edit(@Model.View view)
+        {
+            @Model.Model @Model.ModelVarName = UnitOfWork.To<@Model.Model>(view);
+
+            UnitOfWork.Update(@Model.ModelVarName);
+            UnitOfWork.Commit();
+        }
+        public void Delete(Int32 id)
+        {
+            UnitOfWork.Delete<@Model.Model>(id);
+            UnitOfWork.Commit();
+        }
+    }
+}

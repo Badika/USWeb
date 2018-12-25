@@ -1,0 +1,23 @@
+﻿{
+    "Validations": {
+        "AcceptFiles": "'{0}' field only accepts ({1}) format.",
+        "Date": "'{0}' field must be a date.",
+        "Digits": "'{0}' field must only contain digits.",
+        "Email": "'{0}' field is not a valid email address.",
+        "EqualTo": "'{0}' field must be equal to '{1}'.",
+        "FileSize": "'{0}' size should not exceed {1} MB.",
+        "GreaterThan": "'{0}' field must be greater than {1}.",
+        "Integer": "'{0}' field must be an integer.",
+        "InvalidField": "'{0}' field value is invalid.",
+        "InvalidValue": "Value '{0}' is not valid.",
+        "MaxValue": "'{0}' field must be less or equal to {1}.",
+        "MinLength": "'{0}' field must be at least {1} characters long.",
+        "MinValue": "'{0}' field must be greater or equal to {1}.",
+        "Numeric": "'{0}' field must be numeric.",
+        "Range": "'{0}' field must be between {1} and {2}.",
+        "Required": "'{0}' field is required.",
+        "RequiredValue": "Value is required.",
+        "StringLength": "'{0}' field must not exceed maximum length of {1}.",
+        "StringLengthRange": "'{0}' field must contain between {2} and {1} symbols."
+    }
+}

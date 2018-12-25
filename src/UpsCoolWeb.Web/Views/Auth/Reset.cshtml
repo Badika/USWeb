@@ -1,0 +1,20 @@
+﻿@model AccountResetView
+
+<div class="title text-right">@Resource.ForPage(ViewContext.RouteData.Values)</div>
+
+<hr />
+
+<form asp-antiforgery="true">
+    <input class="collapse" type="password" /> @* Forcing browser to not remember following form inputs *@
+    <partial name="_AuthAlerts" />
+
+    <div class="input-group">
+        <span class="fa fa-lock"></span>
+        <input asp-for="NewPassword" asp-placeholder type="password" />
+        <span class="input-error fa fa-exclamation-triangle"></span>
+    </div>
+
+    <button class="btn btn-block btn-primary mt-3 mb-3">@Resource.ForAction("Submit")</button>
+</form>
+
+<hr />

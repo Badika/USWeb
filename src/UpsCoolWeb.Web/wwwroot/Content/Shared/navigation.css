@@ -1,0 +1,128 @@
+.navigation {
+  flex: 0 0 200px;
+}
+.navigation .menu-search {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  margin: 50px 10px 10px;
+}
+.navigation .menu-search input {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  border-style: none;
+  text-align: center;
+  color: #cccccc;
+  padding: 3px;
+  width: 100%;
+}
+.navigation .menu-search input::-ms-clear {
+  display: none;
+}
+.navigation ul {
+  padding: 0;
+}
+.navigation ul :not(.open) > ul {
+  display: none;
+}
+.navigation ul a {
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  color: #cccccc;
+  display: flex;
+}
+.navigation ul a:hover {
+  background: linear-gradient(#6f93a7, #2a4e62);
+  color: #ffffff;
+}
+.navigation ul a .icon {
+  text-align: center;
+  line-height: 1.5;
+  min-width: 1.5em;
+}
+.navigation ul a .text {
+  padding: 0 5px;
+  flex: 1;
+}
+.navigation ul a .toggle {
+  transition: transform 0.4s ease-out 0.1s;
+  font-size: 10px;
+}
+.navigation ul .open:not(.changing) > a > .toggle,
+.navigation ul .changing:not(.open) > a > .toggle {
+  transform: rotate(90deg);
+}
+.navigation ul li {
+  position: relative;
+}
+.navigation ul li ul {
+  list-style: none;
+  z-index: 2;
+}
+.navigation ul li ul li {
+  background-image: url("../../images/shared/background.jpg");
+}
+.navigation ul li ul a {
+  background-color: rgba(0, 0, 0, 0.15);
+  justify-content: initial;
+  padding-left: 25px;
+}
+.navigation ul li ul ul a {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-left: 35px;
+}
+@media (min-width: 768px) {
+  .navigation > ul:not(:hover) .active > a {
+    background-image: url("../../images/shared/menu-active.png"), linear-gradient(#6f93a7, #2a4e62);
+    background-position: right center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+  }
+}
+@media (max-width: 767px) {
+  .navigation {
+    margin-top: 10px;
+    flex: 0 0 45px;
+  }
+  .navigation .menu-search {
+    display: none;
+  }
+  .navigation > ul:not(:hover) > .has-active > a {
+    background-image: url("../../images/shared/menu-active.png"), linear-gradient(#6f93a7, #2a4e62);
+    background-position: right center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+  }
+  .navigation > ul .icon {
+    width: 10px;
+  }
+  .navigation > ul .text,
+  .navigation > ul .toggle {
+    display: none;
+  }
+  .navigation > ul > li > a {
+    text-align: center;
+    padding: 10px 0;
+  }
+  .navigation > ul > li ul {
+    position: absolute;
+    width: 100px;
+    left: 45px;
+    top: 0;
+  }
+  .navigation > ul > li ul a {
+    font-size: 10px;
+    padding: 6px;
+  }
+  .navigation > ul > li ul .text {
+    display: block;
+  }
+  .navigation > ul > li ul ul {
+    left: 100px;
+  }
+  .navigation > ul > li ul ul .active > a {
+    background-image: none;
+  }
+  .navigation > ul > li ul ul a {
+    padding: 6px;
+  }
+}

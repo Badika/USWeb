@@ -1,0 +1,12 @@
+﻿@model ModuleModel
+using UpsCoolWeb.Objects;
+using System;
+
+namespace UpsCoolWeb.Validators
+{
+    public interface @Model.IValidator : IValidator
+    {
+        Boolean CanCreate(@Model.View view);
+        Boolean CanEdit(@Model.View view);
+    }
+}

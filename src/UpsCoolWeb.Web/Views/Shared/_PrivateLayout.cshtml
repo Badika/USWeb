@@ -1,0 +1,173 @@
+﻿@{ String action = ViewContext.RouteData.Values["action"] as String; }
+
+<!doctype html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(ViewBag.Title ?? Resource.ForPage(ViewContext.RouteData.Values))</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/Content/JQueryUI/jquery-ui.css">
+        <link rel="stylesheet" href="~/Content/JQueryUI/jquery-ui.timepicker-addon.css">
+        <link rel="stylesheet" href="~/Content/Bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="~/Content/FontAwesome/solid.css">
+        <link rel="stylesheet" href="~/Content/FontAwesome/regular.css">
+        <link rel="stylesheet" href="~/Content/FontAwesome/fontawesome.css">
+        <link rel="stylesheet" href="~/Content/MvcLookup/mvc-lookup.css">
+        <link rel="stylesheet" href="~/Content/MvcGrid/mvc-grid.css">
+        <link rel="stylesheet" href="~/Content/MvcTree/mvc-tree.css">
+        <link rel="stylesheet" href="~/Content/Shared/alerts.css">
+        <link rel="stylesheet" href="~/Content/Shared/content.css">
+        <link rel="stylesheet" href="~/Content/Shared/header.css">
+        <link rel="stylesheet" href="~/Content/Shared/navigation.css">
+        <link rel="stylesheet" href="~/Content/Shared/overrides.css">
+        <link rel="stylesheet" href="~/Content/Shared/private.css">
+        <link rel="stylesheet" href="~/Content/Shared/table.css">
+        <link rel="stylesheet" href="~/Content/Shared/widget-box.css">
+        <link rel="stylesheet" action="shared">
+        <link rel="stylesheet" action="@action">
+    </environment>
+    <environment names="Staging,Production">
+        <link asp-append-version="true" rel="stylesheet" href="~/content/private/vendor.min.css">
+        <link asp-append-version="true" rel="stylesheet" href="~/content/private/site.min.css">
+        <link asp-append-version="true" action="shared" rel="stylesheet">
+        <link asp-append-version="true" action="@action" rel="stylesheet">
+    </environment>
+</head>
+<body>
+    <partial name="MvcLookup/_Dialog" />
+
+    <div class="header">
+        <div class="btn">
+            <a asp-action="Edit" asp-controller="Profile" asp-route-area="">
+                <span class="fa fa-user"></span>
+                <span class="text">@Resource.ForAction("Profile")</span>
+            </a>
+        </div>
+        @{ ILanguages languages = Context.RequestServices.GetService<ILanguages>(); }
+        @if (languages.Supported.Length > 1)
+        {
+            <div class="btn dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                    <span class="fa fa-flag"></span>
+                    <span class="text">@Resource.ForAction("Language")</span>
+                    <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu">
+                    @foreach (Language language in languages.Supported)
+                    {
+                        <a class="dropdown-item" href="@Url.Action("Index", "Home", new { area = "", language = language == languages.Default ? "" : language.Abbreviation })">
+                            <img src="@Url.Content($"~/Images/Flags/{language.Abbreviation}.gif")" width="16" height="11" alt="">
+                            @language.Name
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+        <div class="btn">
+            <a asp-action="Logout" asp-controller="Auth" asp-route-area="">
+                <span class="fa fa-share"></span>
+                <span class="text">@Resource.ForAction("Logout")</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="navigation">
+            <div class="menu-search">
+                <input placeholder="@(Resource.ForAction("Search"))..." />
+            </div>
+            @{ ISiteMap siteMap = Context.RequestServices.GetRequiredService<ISiteMap>(); }
+            <partial name="_SiteMap" model="@siteMap.For(ViewContext)" />
+        </div>
+        <div class="main-content">
+            <hr />
+
+            <div class="breadcrumb">
+                @{ SiteMapNode[] breadcrumb = siteMap.BreadcrumbFor(ViewContext).ToArray(); }
+                @for (Int32 i = 0; i < breadcrumb.Length; i++)
+                {
+                    SiteMapNode node = breadcrumb[i];
+                    if (i == breadcrumb.Length - 1)
+                    {
+                        <a class="current">
+                            <span class="icon @node.IconClass"></span>
+                            <span class="text">@Resource.ForSiteMap(node.Area, node.Controller, node.Action)</span>
+                        </a>
+                    }
+                    else if (node.Action != null)
+                    {
+                        <a asp-action="@node.Action" asp-controller="@node.Controller" asp-route-area="@node.Area">
+                            <span class="icon @node.IconClass"></span>
+                            <span class="text">@Resource.ForSiteMap(node.Area, node.Controller, node.Action)</span>
+                        </a>
+                    }
+                }
+            </div>
+
+            <hr class="mb-0" />
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="alerts col-12">
+                        @foreach (Alert alert in JsonConvert.DeserializeObject<Alerts>(TempData["Alerts"] as String))
+                        {
+                            <div id="@alert.Id" class="alert alert-@alert.Type.ToString().ToLowerInvariant()" data-timeout="@alert.Timeout">
+                                <span>@alert.Message</span><span class="close">×</span>
+                            </div>
+                        }
+                    </div>
+
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        @DateTime.Now.Year &copy; All rights reserved.
+    </div>
+
+    <environment names="Development">
+        <script src="~/Scripts/JQuery/jquery.js"></script>
+        <script src="~/Scripts/JQuery/jquery.validate.js"></script>
+        <script src="~/Scripts/JQuery/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/JQuery/jquery.globalize.js"></script>
+        <script src="~/Scripts/JQuery/Cultures/globalize.en.js"></script>
+        <script src="~/Scripts/JQuery/Cultures/globalize.lt.js"></script>
+        <script src="~/Scripts/JQueryUI/jquery-ui.js"></script>
+        <script src="~/Scripts/JQueryUI/Cultures/jquery-ui.en.js"></script>
+        <script src="~/Scripts/JQueryUI/Cultures/jquery-ui.lt.js"></script>
+        <script src="~/Scripts/JQueryUI/jquery-ui.timepicker-addon.js"></script>
+        <script src="~/Scripts/Bootstrap/bootstrap-native.js"></script>
+        <script src="~/Scripts/MvcLookup/mvc-lookup.js"></script>
+        <script src="~/Scripts/MvcLookup/Cultures/mvc-lookup.en.js"></script>
+        <script src="~/Scripts/MvcLookup/Cultures/mvc-lookup.lt.js"></script>
+        <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+        <script src="~/Scripts/MvcGrid/Cultures/mvc-grid.en.js"></script>
+        <script src="~/Scripts/MvcGrid/Cultures/mvc-grid.lt.js"></script>
+        <script src="~/Scripts/MvcTree/mvc-tree.js"></script>
+        <script src="~/Scripts/Shared/Widgets/alerts.js"></script>
+        <script src="~/Scripts/Shared/Widgets/datepicker.js"></script>
+        <script src="~/Scripts/Shared/Widgets/grid.js"></script>
+        <script src="~/Scripts/Shared/Widgets/header.js"></script>
+        <script src="~/Scripts/Shared/Widgets/tree.js"></script>
+        <script src="~/Scripts/Shared/Widgets/lookup.js"></script>
+        <script src="~/Scripts/Shared/Widgets/navigation.js"></script>
+        <script src="~/Scripts/Shared/Widgets/validator.js"></script>
+        <script action="shared"></script>
+        <script action="@action"></script>
+        <script src="~/Scripts/Shared/private.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script asp-append-version="true" src="~/scripts/private/vendor.min.js"></script>
+        <script asp-append-version="true" action="shared"></script>
+        <script asp-append-version="true" action="@action"></script>
+        <script asp-append-version="true" src="~/scripts/private/site.min.js"></script>
+    </environment>
+</body>
+</html>

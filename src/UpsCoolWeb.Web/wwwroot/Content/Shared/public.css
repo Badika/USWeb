@@ -1,0 +1,95 @@
+body {
+  background-image: url("../../images/shared/content-background.jpg");
+  background-color: #f2f2f2;
+  font-size: 0.875rem;
+  color: #555555;
+}
+.main-content {
+  text-align: center;
+  margin: 50px auto;
+  min-height: 0;
+  width: 330px;
+}
+form {
+  padding: 0 1em;
+}
+.input-group {
+  box-shadow: rgba(0, 0, 0, 0.05) 0 0 3px inset;
+  background: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  padding: 5px 12px;
+}
+.input-group .fa {
+  position: absolute;
+  z-index: 5;
+  top: 13px;
+}
+.input-group .fa.fa-user {
+  left: 14px;
+}
+.input-group .fa.fa-lock {
+  left: 15px;
+}
+.input-group .fa.fa-flag {
+  left: 13px;
+}
+.input-group img {
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+.input-group input {
+  border-style: none;
+  padding-left: 25px;
+  font-size: inherit;
+  height: 30px;
+  width: 100%;
+}
+.input-group input::-ms-clear {
+  display: none;
+}
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:focus {
+  box-shadow: 0 50px #ffffff inset;
+}
+.input-group input:focus {
+  box-shadow: none;
+  outline: none;
+}
+.input-group .input-error {
+  color: #dc3545;
+  display: none;
+  right: 13px;
+}
+.input-group .input-validation-error {
+  padding-right: 25px;
+}
+.input-group .input-validation-error + .input-error {
+  display: block;
+}
+.input-group .dropdown-toggle::after {
+  margin-top: 0.6em;
+}
+.input-group .dropdown-menu {
+  right: 16px;
+  left: 16px;
+}
+.languages {
+  padding: 5px 0 0 1px;
+  cursor: pointer;
+  display: flex;
+  height: 30px;
+  width: 100%;
+}
+.languages .current {
+  text-align: left;
+  width: 100%;
+}
+.btn {
+  font-size: 1.3em;
+  padding: 10px;
+}
+.actions .title {
+  font-size: 1.8em;
+  padding: 5px;
+}

@@ -1,0 +1,24 @@
+﻿@model ModuleModel
+using UpsCoolWeb.Data.Core;
+using UpsCoolWeb.Objects;
+using System;
+
+namespace UpsCoolWeb.Validators
+{
+    public class @Model.Validator : BaseValidator, @Model.IValidator
+    {
+        public @(Model.Validator)(IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+        }
+
+        public Boolean CanCreate(@Model.View view)
+        {
+            return ModelState.IsValid;
+        }
+        public Boolean CanEdit(@Model.View view)
+        {
+            return ModelState.IsValid;
+        }
+    }
+}

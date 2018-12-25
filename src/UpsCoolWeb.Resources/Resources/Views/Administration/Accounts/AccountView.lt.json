@@ -1,0 +1,25 @@
+﻿{
+    "Messages": {
+        "ProfileDeleteDisclaimer": "Jūs ruošiatės ištrinti savo paskyrą, visa jūsų asmeninė informacija bus panaikinta",
+        "ProfileUpdated": "Paskyra atnaujinta sėkmingai",
+        "RecoveryEmailBody": "Norėdami atkurti savo paskyrą, spauskite <a href=\"{0}\">čia</a>.",
+        "RecoveryEmailSubject": "Paskyros atkūrimas",
+        "RecoveryInformation": "Paskyros atkūrimo informacija išsiųsta į jūsų elektroninį paštą",
+        "SuccessfulReset": "Jūsų paskyros slaptažodis pakeistas sėkmingai"
+    },
+    "Titles": {
+        "Email": "Elektroninis paštas",
+        "IsLocked": "Deaktyvuotas",
+        "Password": "Slaptažodis",
+        "RoleTitle": "Rolė",
+        "Username": "Prisijungimo vardas"
+    },
+    "Validations": {
+        "ExpiredToken": "Atkūrimo galiojimo laikas yra pasibaigęs.",
+        "IncorrectAuthentication": "Prisijungimo vardas arba slaptažodis yra neteisingas.",
+        "IncorrectPassword": "Neteisingas slaptažodis.",
+        "LockedAccount": "Jūsų paskyra yra deaktyvuota.",
+        "UniqueEmail": "Elektroninis paštas jau yra naudojamas.",
+        "UniqueUsername": "Prisijungimo vardas jau yra naudojamas."
+    }
+}

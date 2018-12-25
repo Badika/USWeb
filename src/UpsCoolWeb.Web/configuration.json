@@ -1,0 +1,63 @@
+﻿{
+  "Cookies": {
+    "Antiforgery": {
+      "Name": ".Web-Token"
+    },
+    "Auth": {
+      "Name": ".Web-Auth"
+    },
+    "TempData": {
+      "Name": ".Web-Temp"
+    },
+    "Session": {
+      "Name": ".Web-Session"
+    }
+  },
+
+  "Data": {
+    "Connection": "Server=(localdb)\\mssqllocaldb;Database=UpsCoolWeb;Trusted_Connection=True;MultipleActiveResultSets=True"
+  },
+
+  "Languages": {
+    "Default": "en",
+    "Supported": [
+      {
+        "name": "English",
+        "culture": "en-GB",
+        "abbreviation": "en"
+      },
+      {
+        "name": "Lietuvių",
+        "culture": "lt-LT",
+        "abbreviation": "lt"
+      }
+    ]
+  },
+
+  "Logging": {
+    "Console": {
+      "LogLevel": {
+        "Default": "Debug"
+      }
+    },
+    "File": {
+      "Path": "Logs/log.txt",
+      "RollSize": 5242880,
+      "LogLevel": {
+        "Default": "Error"
+      }
+    }
+  },
+
+  "Mail": {
+    "Port": 587,
+    "EnableSsl": true,
+    "Host": "smtp.gmail.com",
+    "Sender": "MVC.Template@gmail.com",
+    "Password": "ChangeIt"
+  },
+
+  "SiteMap": {
+    "Path": "mvc.sitemap"
+  }
+}

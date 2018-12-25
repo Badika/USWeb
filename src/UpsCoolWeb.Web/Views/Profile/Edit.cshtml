@@ -1,0 +1,71 @@
+﻿@model ProfileEditView
+
+<div class="col">
+    <div class="widget-box">
+        <div class="widget-header">
+            <span class="icon fa fa-th-list"></span>
+            <h5>@Resource.ForPage("Profile")</h5>
+            <div class="widget-header-buttons">
+                <authorize action="Delete">
+                    <a asp-action="Delete" class="btn">
+                        <span class="fa fa-times"></span><span class="text">@Resource.ForAction("Delete")</span>
+                    </a>
+                </authorize>
+            </div>
+        </div>
+        <div class="widget-content">
+            <form asp-antiforgery="true">
+                <input class="collapse" type="password" /> @* Forcing browser to not remember following form inputs *@
+                <div class="form-group">
+                    <div class="control-label col-md-3 col-lg-2">
+                        <label asp-for="Username"></label>
+                    </div>
+                    <div class="control-content col-md-9 col-lg-5">
+                        <input asp-for="Username" />
+                    </div>
+                    <div class="control-validation col">
+                        <span asp-validation-for="Username"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-3 col-lg-2">
+                        <label asp-for="Password"></label>
+                    </div>
+                    <div class="control-content col-md-9 col-lg-5">
+                        <input asp-for="Password" type="password" />
+                    </div>
+                    <div class="control-validation col">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-3 col-lg-2">
+                        <label asp-for="NewPassword"></label>
+                    </div>
+                    <div class="control-content col-md-9 col-lg-5">
+                        <input asp-for="NewPassword" type="password" />
+                    </div>
+                    <div class="control-validation col">
+                        <span asp-validation-for="NewPassword"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-3 col-lg-2">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="control-content col-md-9 col-lg-5">
+                        <input asp-for="Email" />
+                    </div>
+                    <div class="control-validation col">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-actions col-lg-7">
+                        <button class="btn btn-primary">@Resource.ForAction("Submit")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

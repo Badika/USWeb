@@ -1,0 +1,27 @@
+﻿@model IEnumerable<SiteMapNode>
+
+<ul>
+    @foreach (SiteMapNode node in Model)
+    {
+        String link = node.Action != null ? Url.Action(node.Action, node.Controller, new { area = node.Area }) : "#";
+        String menu = node.HasActiveChildren ? "has-active open" : "";
+        menu += node.Children.Any() ? " submenu" : "";
+        menu += node.IsActive ? " active" : "";
+        menu = menu.Trim();
+
+        <li class="@menu">
+            <a href="@link">
+                <span class="icon @node.IconClass"></span>
+                <span class="text">@Resource.ForSiteMap(node.Area, node.Controller, node.Action)</span>
+                @if (node.Action == null)
+                {
+                    <span class="toggle fa fa-angle-right"></span>
+                }
+            </a>
+            @if (node.Children.Any())
+            {
+                <partial name="_SiteMap" model="@node.Children" />
+            }
+        </li>
+    }
+</ul>

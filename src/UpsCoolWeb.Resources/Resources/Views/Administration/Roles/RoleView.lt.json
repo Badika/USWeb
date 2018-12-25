@@ -1,0 +1,10 @@
+﻿{
+    "Titles": {
+        "Id": "Rolė",
+        "Permissions": "Teisės",
+        "Title": "Pavadinimas"
+    },
+    "Validations": {
+        "UniqueTitle": "Rolės pavadinimas jau yra naudojamas."
+    }
+}

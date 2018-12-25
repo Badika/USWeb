@@ -1,0 +1,57 @@
+﻿@model AccountLoginView
+
+<div class="title text-right">@Resource.ForPage(ViewContext.RouteData.Values)</div>
+
+<hr />
+
+<form asp-antiforgery="true">
+    <partial name="_AuthAlerts" />
+
+    <div class="input-group">
+        <span class="fa fa-user"></span>
+        <input asp-for="Username" asp-placeholder />
+        <span class="input-error fa fa-exclamation-triangle"></span>
+    </div>
+    <div class="input-group">
+        <span class="fa fa-lock"></span>
+        <input asp-for="Password" asp-placeholder type="password" />
+        <span class="input-error fa fa-exclamation-triangle"></span>
+    </div>
+
+    @{ ILanguages languages = Context.RequestServices.GetService<ILanguages>(); }
+    @{ String returnPath = ViewContext.HttpContext.Request.Query["returnUrl"]; }
+    @{ String rootPath = Context.Request.PathBase.Value.Trim('/'); }
+    @{ returnPath = (returnPath ?? rootPath).Trim('/'); }
+
+    @if (languages.Supported.Length > 1 && returnPath == rootPath)
+    {
+        <div class="input-group">
+            <div class="languages dropdown-toggle" data-toggle="dropdown">
+                <span class="current">
+                    <img src="@Url.Content($"~/Images/Flags/{languages.Current.Abbreviation}.gif")" width="16" height="11" alt="">
+                    @languages.Current.Name
+                </span>
+                <span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu">
+                @foreach (Language language in languages.Supported)
+                {
+                    <li>
+                        <a class="dropdown-item" href="@Url.Action("Login", new { language = language == languages.Default ? "" : language.Abbreviation })">
+                            <img src="@Url.Content($"~/Images/Flags/{language.Abbreviation}.gif")" width="16" height="11" alt="">
+                            @language.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+
+    <button class="btn btn-block btn-primary mt-3 mb-3">@Resource.ForAction("Login")</button>
+</form>
+
+<hr />
+
+<div class="actions text-right">
+    <a asp-action="Recover" class="title fa fa-unlock" data-toggle="tooltip" data-original-title="@Resource.ForString("LostPassword")" data-placement="bottom" data-delay="1"></a>
+</div>

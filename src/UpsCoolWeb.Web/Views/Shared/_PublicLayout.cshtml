@@ -1,0 +1,54 @@
+﻿@{ String action = ViewContext.RouteData.Values["action"] as String; }
+
+<!doctype html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(ViewBag.Title ?? Resource.ForPage(ViewContext.RouteData.Values))</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/Content/Bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="~/Content/FontAwesome/solid.css">
+        <link rel="stylesheet" href="~/Content/FontAwesome/regular.css">
+        <link rel="stylesheet" href="~/Content/FontAwesome/fontawesome.css">
+        <link rel="stylesheet" href="~/Content/Shared/alerts.css">
+        <link rel="stylesheet" href="~/Content/Shared/content.css">
+        <link rel="stylesheet" href="~/Content/Shared/overrides.css">
+        <link rel="stylesheet" href="~/Content/Shared/public.css">
+        <link rel="stylesheet" action="shared">
+        <link rel="stylesheet" action="@action">
+    </environment>
+    <environment names="Staging,Production">
+        <link asp-append-version="true" rel="stylesheet" href="~/content/public/vendor.min.css">
+        <link asp-append-version="true" rel="stylesheet" href="~/content/public/site.min.css">
+        <link asp-append-version="true" rel="stylesheet" action="shared">
+        <link asp-append-version="true" rel="stylesheet" action="@action">
+    </environment>
+</head>
+<body>
+    <div class="main-content">
+        @RenderBody()
+    </div>
+
+    <environment names="Development">
+        <script src="~/Scripts/JQuery/jquery.js"></script>
+        <script src="~/Scripts/JQuery/jquery.validate.js"></script>
+        <script src="~/Scripts/JQuery/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/JQuery/jquery.globalize.js"></script>
+        <script src="~/Scripts/JQuery/Cultures/globalize.en.js"></script>
+        <script src="~/Scripts/JQuery/Cultures/globalize.lt.js"></script>
+        <script src="~/Scripts/Bootstrap/bootstrap-native.js"></script>
+        <script src="~/Scripts/Shared/Widgets/alerts.js"></script>
+        <script src="~/Scripts/Shared/Widgets/validator.js"></script>
+        <script src="~/Scripts/Shared/public.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script asp-append-version="true" src="~/scripts/public/vendor.min.js"></script>
+        <script asp-append-version="true" src="~/scripts/public/site.min.js"></script>
+    </environment>
+</body>
+</html>

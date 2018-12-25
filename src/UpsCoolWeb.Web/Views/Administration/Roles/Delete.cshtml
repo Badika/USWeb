@@ -1,0 +1,47 @@
+﻿@model RoleView
+
+<div class="col">
+    <div class="widget-box readonly">
+        <div class="widget-header">
+            <span class="icon fa fa-th-list"></span>
+            <h5>@Resource.ForPage("Role")</h5>
+            <div class="widget-header-buttons">
+                <authorize action="Details">
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="btn">
+                        <span class="fa fa-info"></span><span class="text">@Resource.ForAction("Details")</span>
+                    </a>
+                </authorize>
+                <authorize action="Edit">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn">
+                        <span class="fa fa-pencil-alt"></span><span class="text">@Resource.ForAction("Edit")</span>
+                    </a>
+                </authorize>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="form-group">
+                <div class="control-label col-md-3 col-lg-2">
+                    <label asp-for="Title"></label>
+                </div>
+                <div class="control-content col-md-9 col-lg-5">
+                    <input asp-for="Title" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-md-3 col-lg-2">
+                    <label asp-for="Permissions"></label>
+                </div>
+                <div class="control-content col-md-9 col-lg-5">
+                    <div mvc-tree-for="Permissions" hide-depth="2"></div>
+                </div>
+            </div>
+            <form asp-antiforgery="true">
+                <div class="form-group">
+                    <div class="form-actions col-lg-7">
+                        <button class="btn btn-primary">@Resource.ForAction("Submit")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

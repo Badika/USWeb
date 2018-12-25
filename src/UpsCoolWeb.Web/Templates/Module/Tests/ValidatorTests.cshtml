@@ -1,0 +1,71 @@
+﻿@model ModuleModel
+using UpsCoolWeb.Data.Core;
+using UpsCoolWeb.Objects;
+using UpsCoolWeb.Tests;
+using UpsCoolWeb.Validators;
+using System;
+using Xunit;
+
+namespace UpsCoolWeb.Validators.Tests
+{
+    public class @Model.ValidatorTests : IDisposable
+    {
+        private @Model.Validator validator;
+        private TestingContext context;
+        private @Model.Model @Model.ModelVarName;
+
+        public @(Model.ValidatorTests)()
+        {
+            context = new TestingContext();
+            validator = new @(Model.Validator)(new UnitOfWork(context));
+
+            context.Set<@Model.Model>().Add(@Model.ModelVarName = ObjectsFactory.Create@(Model.Model)());
+            context.SaveChanges();
+        }
+        public void Dispose()
+        {
+            context.Dispose();
+            validator.Dispose();
+        }
+
+        #region CanCreate(@Model.View view)
+
+        [Fact]
+        public void CanCreate_InvalidState_ReturnsFalse()
+        {
+            validator.ModelState.AddModelError("Test", "Test");
+
+            Assert.False(validator.CanCreate(ObjectsFactory.Create@(Model.View)(1)));
+        }
+
+        [Fact]
+        public void CanCreate_Valid@(Model.ModelShortName)()
+        {
+            Assert.True(validator.CanCreate(ObjectsFactory.Create@(Model.View)(1)));
+            Assert.Empty(validator.ModelState);
+            Assert.Empty(validator.Alerts);
+        }
+
+        #endregion
+
+        #region CanEdit(@Model.View view)
+
+        [Fact]
+        public void CanEdit_InvalidState_ReturnsFalse()
+        {
+            validator.ModelState.AddModelError("Test", "Test");
+
+            Assert.False(validator.CanEdit(ObjectsFactory.Create@(Model.View)(@(Model.ModelVarName).Id)));
+        }
+
+        [Fact]
+        public void CanEdit_Valid@(Model.ModelShortName)()
+        {
+            Assert.True(validator.CanEdit(ObjectsFactory.Create@(Model.View)(@(Model.ModelVarName).Id)));
+            Assert.Empty(validator.ModelState);
+            Assert.Empty(validator.Alerts);
+        }
+
+        #endregion
+    }
+}

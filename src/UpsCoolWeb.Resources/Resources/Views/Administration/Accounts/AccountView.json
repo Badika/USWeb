@@ -1,0 +1,25 @@
+﻿{
+    "Messages": {
+        "ProfileDeleteDisclaimer": "You are about to delete your profile, all your personal information will be deleted",
+        "ProfileUpdated": "Profile updated successfully",
+        "RecoveryEmailBody": "To recover your account details, simply follow this <a href=\"{0}\">link</a>.",
+        "RecoveryEmailSubject": "Account recovery",
+        "RecoveryInformation": "Account recovery information was send to your email",
+        "SuccessfulReset": "Your account password has been changed successfully"
+    },
+    "Titles": {
+        "Email": "Email",
+        "IsLocked": "Locked",
+        "Password": "Password",
+        "RoleTitle": "Role",
+        "Username": "Username"
+    },
+    "Validations": {
+        "ExpiredToken": "Recovery token is already expired.",
+        "IncorrectAuthentication": "The username or password is incorrect.",
+        "IncorrectPassword": "Password is incorrect.",
+        "LockedAccount": "Your account is locked.",
+        "UniqueEmail": "Email address is already being used.",
+        "UniqueUsername": "Username is already taken."
+    }
+}

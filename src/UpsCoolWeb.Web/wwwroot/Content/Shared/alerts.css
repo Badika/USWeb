@@ -1,0 +1,17 @@
+.alerts {
+  margin: 7.5px 0;
+}
+.alerts .alert {
+  align-items: center;
+  text-align: justify;
+  padding: 8px 15px;
+  display: flex;
+  margin: 0;
+}
+.alerts .alert + .alert {
+  margin-top: 5px;
+}
+.alerts .alert span:first-of-type {
+  padding-right: 10px;
+  flex: 1;
+}

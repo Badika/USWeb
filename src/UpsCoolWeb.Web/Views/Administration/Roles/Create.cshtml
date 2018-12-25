@@ -1,0 +1,41 @@
+﻿@model RoleView
+
+<div class="col">
+    <div class="widget-box">
+        <div class="widget-header">
+            <span class="icon fa fa-th-list"></span>
+            <h5>@Resource.ForPage("Role")</h5>
+        </div>
+        <div class="widget-content">
+            <form asp-antiforgery="true">
+                <div class="form-group">
+                    <div class="control-label col-md-3 col-lg-2">
+                        <label asp-for="Title"></label>
+                    </div>
+                    <div class="control-content col-md-9 col-lg-5">
+                        <input asp-for="Title" />
+                    </div>
+                    <div class="control-validation col">
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-3 col-lg-2">
+                        <label asp-for="Permissions"></label>
+                    </div>
+                    <div class="control-content col-md-9 col-lg-5">
+                        <div mvc-tree-for="Permissions" hide-depth="2"></div>
+                    </div>
+                    <div class="control-validation col">
+                        <span asp-validation-for="Permissions"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-actions col-lg-7">
+                        <button class="btn btn-primary">@Resource.ForAction("Submit")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

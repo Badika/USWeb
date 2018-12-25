@@ -1,0 +1,21 @@
+﻿@model ModuleModel
+@{
+    PropertyInfo[] properties = Model.Properties.OrderBy(property => property.Name).ToArray();
+}
+{
+    "Titles": {
+        @for (Int32 i = 0; i < properties.Length; i++)
+        {
+            PropertyInfo property = properties[i];
+
+            if (i + 1 < properties.Length)
+            {
+        @:"@property.Name": "@property.Name.Humanize()",
+            }
+            else
+            {
+        @:"@property.Name": "@property.Name.Humanize()"
+            }
+        }
+    }
+}

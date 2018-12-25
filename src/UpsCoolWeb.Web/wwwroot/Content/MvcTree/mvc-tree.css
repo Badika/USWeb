@@ -1,0 +1,93 @@
+.mvc-tree {
+    padding: 7px 0 3px;
+}
+
+.mvc-tree ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mvc-tree li {
+    background-image: url("../../Images/MvcTree/icons.png");
+    background-position: -292px -4px;
+    background-repeat: repeat-y;
+    white-space: nowrap;
+}
+
+.mvc-tree li li {
+    margin-left: 24px;
+}
+
+.mvc-tree li:last-child {
+    background: transparent;
+}
+
+.mvc-tree a {
+    transition: background-color 0.2s;
+    border-radius: 2px;
+    padding-right: 4px;
+    line-height: 24px;
+    color: inherit;
+    outline: none;
+}
+
+.mvc-tree i,
+.mvc-tree a::before {
+    background-image: url("../../Images/MvcTree/icons.png");
+    display: inline-block;
+    vertical-align: top;
+    content: " ";
+    height: 24px;
+    width: 24px;
+}
+
+.mvc-tree a:focus,
+.mvc-tree a:hover {
+    background: #e7f4f9;
+}
+
+.mvc-tree i {
+    background-position: -68px -4px;
+}
+
+.mvc-tree-branch > i {
+    background-position: -132px -4px;
+    cursor: pointer;
+}
+
+.mvc-tree-collapsed > i {
+    background-position: -100px -4px;
+}
+
+.mvc-tree-collapsed > ul {
+    display: none;
+}
+
+.mvc-tree a::before {
+    background-position: -164px -4px;
+}
+
+.mvc-tree a:hover::before {
+    background-position: -164px -36px;
+}
+
+.mvc-tree-readonly a {
+    cursor: default;
+}
+
+.mvc-tree-checked > a::before {
+    background-position: -228px -4px;
+}
+
+.mvc-tree-checked > a:hover::before {
+    background-position: -228px -36px;
+}
+
+.mvc-tree-undetermined > a::before {
+    background-position: -196px -4px;
+}
+
+.mvc-tree-undetermined > a:hover::before {
+    background-position: -196px -36px;
+}

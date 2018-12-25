@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "_PublicLayout";
+}
+
+<div class="title text-right">@Resource.ForPage(ViewContext.RouteData.Values)</div>
+
+<hr />
+
+<div class="title fa fa-search"></div>
+
+<hr />
+
+<div class="description">@Resource.ForString("PageNotFound")</div>
+
+<a asp-action="Index" asp-controller="Home" asp-route-area="" class="btn btn-block btn-primary mt-3">
+    @Resource.ForAction("Home")
+</a>

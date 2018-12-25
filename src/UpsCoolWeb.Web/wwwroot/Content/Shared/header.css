@@ -1,0 +1,54 @@
+.header {
+  justify-content: flex-end;
+  display: flex;
+}
+.header .btn {
+  min-width: 50px;
+  font-size: 1em;
+  border: none;
+  padding: 0;
+}
+.header .btn.open > a,
+.header .btn:hover > a {
+  background: linear-gradient(#6f93a7, #2a4e62);
+  color: #ffffff;
+}
+.header .btn > a {
+  text-shadow: 0 0 #cccccc;
+  line-height: 1.42857143;
+  display: block;
+  color: #cccccc;
+  padding: 10px;
+}
+.header .btn > a .fa {
+  margin-right: 5px;
+}
+.header .btn > a .caret {
+  margin-left: 5px;
+}
+.header .btn img {
+  margin-bottom: 3px;
+}
+.header .btn .dropdown-menu {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: 0;
+}
+.header .btn .dropdown-menu img {
+  margin-right: 5px;
+}
+.header .btn .dropdown-toggle::after {
+  vertical-align: 0.2em;
+}
+@media (max-width: 767px) {
+  .header .btn > a .fa {
+    margin: 0;
+  }
+  .header .dropdown-menu {
+    left: -120px;
+  }
+  .header .text,
+  .header .caret {
+    display: none;
+  }
+}

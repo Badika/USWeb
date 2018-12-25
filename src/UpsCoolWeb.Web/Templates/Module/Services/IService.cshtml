@@ -1,0 +1,17 @@
+﻿@model ModuleModel
+using UpsCoolWeb.Objects;
+using System;
+using System.Linq;
+
+namespace UpsCoolWeb.Services
+{
+    public interface @Model.IService : IService
+    {
+        TView Get<TView>(Int32 id) where TView : BaseView;
+        IQueryable<@Model.View> GetViews();
+
+        void Create(@Model.View view);
+        void Edit(@Model.View view);
+        void Delete(Int32 id);
+    }
+}

@@ -1,0 +1,484 @@
+﻿/*!
+ * Mvc.Lookup 3.2.1
+ * https://github.com/NonFactors/MVC6.Lookup
+ *
+ * Copyright © NonFactors
+ *
+ * Licensed under the terms of the MIT License
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
+.mvc-lookup {
+    font-size: 1rem;
+    display: flex;
+    width: 100%;
+}
+
+.mvc-lookup-control {
+    padding: 0.125em 2em 0.125em 0.125em;
+    border-radius: 0.25em 0 0 0.25em;
+    border: 1px solid #ced4da;
+    background: #ffffff;
+    position: relative;
+    flex: 1;
+}
+
+.mvc-lookup-item {
+    transition: background-color linear 0.3s;
+    padding: 1px 1px 1px 0.375em;
+    border: 1px solid #dee2e6;
+    border-radius: 0.1875em;
+    display: inline-block;
+    white-space: nowrap;
+    background: #f8f8f8;
+    line-height: 1.5;
+    margin: 0.125em;
+    color: #999999;
+}
+
+.mvc-lookup-item:hover {
+    border-color: #cccccc;
+    background: #f0f0f0;
+}
+
+.mvc-lookup-deselect {
+    transition: color 0.5s;
+    padding: 0 0.25em;
+    background: none;
+    cursor: pointer;
+    color: #999999;
+    border: none;
+}
+
+.mvc-lookup-deselect:hover {
+    color: #000000;
+}
+
+.mvc-lookup-input {
+    padding: 0.25em 0.25em 0.25em 0.5em;
+    box-sizing: border-box;
+    line-height: 1.5;
+    background: none;
+    font-size: 1em;
+    color: #495057;
+    outline: none;
+    border: none;
+    height: 2em;
+    width: 99%;
+}
+
+.mvc-lookup-input::-ms-clear {
+    display: none;
+}
+
+.mvc-lookup-control-loader {
+    animation: mvc-lookup-spin 1s infinite linear;
+    border: 0.125em solid rgba(0, 0, 0, 0.2);
+    border-top-color: #444444;
+    box-sizing: border-box;
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+    right: 0.65em;
+    height: 1em;
+    top: 0.65em;
+    width: 1em;
+}
+
+.mvc-lookup-control-error {
+    border: 0.0625em solid rgba(255, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+    transition: opacity 0.3s linear;
+    color: rgba(255, 0, 0, 0.5);
+    box-sizing: border-box;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    font-size: 0.9em;
+    cursor: default;
+    height: 1.5rem;
+    right: 0.45em;
+    width: 1.5rem;
+    top: 0.4rem;
+    opacity: 0;
+}
+
+.mvc-lookup-loading .mvc-lookup-control-loader {
+    display: block;
+}
+
+.mvc-lookup-error .mvc-lookup-control-error {
+    opacity: 1;
+}
+
+.mvc-lookup-browser {
+    border-radius: 0 0.25em 0.25em 0;
+    border: 1px solid #ced4da;
+    padding: 0.375em 0.75em;
+    background: #e9ecef;
+    margin-left: -1px;
+    cursor: pointer;
+    color: #495057;
+}
+
+.mvc-lookup-browser:focus {
+    z-index: 2;
+}
+
+.mvc-lookup-browser:active {
+    outline: none;
+}
+
+.mvc-lookup-icon {
+    margin: 0 0.125em 0.125em 0;
+    transform: rotate(310deg);
+    box-sizing: border-box;
+    border: 0.125em solid;
+    border-radius: 50%;
+    display: block;
+    height: 0.8em;
+    width: 0.8em;
+}
+
+.mvc-lookup-icon:before {
+    box-shadow: inset 0 0 0 2em;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    position: absolute;
+    width: 0.1875em;
+    height: 0.5em;
+    content: '';
+    top: 0.6em;
+    left: 45%;
+}
+
+.mvc-lookup-readonly .mvc-lookup-control {
+    background: #e9ecef;
+}
+
+.mvc-lookup-readonly .mvc-lookup-item {
+    padding: 1px 0.375em;
+}
+
+.mvc-lookup-readonly .mvc-lookup-deselect {
+    display: none;
+}
+
+.mvc-lookup-readonly .mvc-lookup-browser {
+    cursor: not-allowed;
+}
+
+.mvc-lookup-browseless .mvc-lookup-control {
+    border-radius: 0.25em;
+}
+
+.mvc-lookup-open {
+    overflow: hidden;
+}
+
+.mvc-lookup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    overflow-x: auto;
+    padding: 3em 1em;
+    font-size: 1rem;
+    position: fixed;
+    display: none;
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.mvc-lookup-wrapper {
+    justify-content: center;
+    display: flex;
+}
+
+.mvc-lookup-dialog {
+    min-width: 400px;
+    max-width: 100%;
+    z-index: 1100;
+}
+
+@media (max-width: 575px) {
+    .mvc-lookup-dialog {
+        min-width: 325px;
+    }
+}
+
+.mvc-lookup-header {
+    border: 1px solid rgba(30, 54, 101, 0.8);
+    border-radius: 0.25em 0.25em 0 0;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.4em 0.6em 0.4em 1em;
+    background: #62759c;
+    border-bottom: none;
+    font-weight: bold;
+    display: flex;
+}
+
+.mvc-lookup-title {
+    font-size: 1.1em;
+    flex: 1;
+}
+
+.mvc-lookup-close {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s;
+    font-weight: bold;
+    background: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    line-height: 1;
+    border: none;
+}
+
+.mvc-lookup-close:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.mvc-lookup-body {
+    border: 1px solid rgba(30, 54, 101, 0.8);
+    border-radius: 0 0 0.25em 0.25em;
+    background: #ffffff;
+    font-size: 0.875em;
+    padding: 1em;
+}
+
+.mvc-lookup-search-area {
+    display: flex;
+}
+
+.mvc-lookup-search {
+    border-radius: 0.25em 0 0 0.25em;
+    border: 1px solid #ced4da;
+    padding: 0.4em 0.85em;
+    line-height: 1.5;
+    color: #495057;
+    width: 100%;
+    flex: 1;
+}
+
+.mvc-lookup-search::-ms-clear {
+    display: none;
+}
+
+.mvc-lookup-rows {
+    border-radius: 0 0.25em 0.25em 0;
+    border: 1px solid #ced4da;
+    background: #e9ecef;
+    text-align: center;
+    border-left: none;
+    line-height: 1.5;
+    width: 3.8em;
+}
+
+.mvc-lookup-rows::-ms-clear {
+    display: none;
+}
+
+.mvc-lookup-selector {
+    background: rgba(78, 169, 86, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #5c9845;
+    transition: color 0.3s;
+    border-radius: 0.25em;
+    margin-left: 0.5em;
+    padding: 0 0.5em;
+    cursor: pointer;
+    min-width: 7em;
+}
+
+.mvc-lookup-selector:hover {
+    color: #ffffff;
+}
+
+.mvc-lookup-content {
+    margin-top: 0.75em;
+    position: relative;
+    min-height: 6.9em;
+}
+
+.mvc-lookup-dialog-error,
+.mvc-lookup-dialog-loader {
+    border: 1px solid #dddddd;
+    transition: opacity 0.3s;
+    justify-content: center;
+    background: #ffffff;
+    align-items: center;
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+.mvc-lookup-dialog-loader > span {
+    animation: mvc-lookup-spin 1s infinite linear;
+    border: 0.5em solid rgba(0, 0, 0, 0.2);
+    border-top-color: #444444;
+}
+
+.mvc-lookup-dialog-loader > span,
+.mvc-lookup-dialog-loader > span:after {
+    border-radius: 50%;
+    height: 5em;
+    width: 5em;
+}
+
+.mvc-lookup-dialog-error {
+    border-color: #ebccd1;
+    background: #fff6f6;
+    color: #a94442;
+}
+
+.mvc-lookup-table {
+    overflow-x: auto;
+}
+
+.mvc-lookup-table table {
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+}
+
+.mvc-lookup-table tr {
+    cursor: pointer;
+}
+
+.mvc-lookup-table tbody tr:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.mvc-lookup-table .selected {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.mvc-lookup-table th {
+    text-align: center;
+}
+
+.mvc-lookup-table th,
+.mvc-lookup-table td {
+    border: 1px solid #dee2e6;
+    padding: 0.3em 0.6em;
+    line-height: 1.5;
+}
+
+.mvc-lookup-table .mvc-lookup-asc::after {
+    padding-left: 0.25em;
+    content: '\2193';
+}
+
+.mvc-lookup-table .mvc-lookup-desc::after {
+    padding-left: 0.25em;
+    content: '\2191';
+}
+
+.mvc-lookup-table .mvc-lookup-split td {
+    background: #ffffff;
+    color: transparent;
+    font-size: 0.5em;
+    cursor: default;
+    border: none;
+}
+
+.mvc-lookup-table td:last-child {
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    width: 2em;
+}
+
+.mvc-lookup-table td:last-child::after {
+    content: '\25CF';
+}
+
+.mvc-lookup-table .selected td:last-child::after {
+    content: '\2714';
+    color: #5cb85c;
+}
+
+.mvc-lookup-table .mvc-lookup-empty {
+    text-align: center;
+    cursor: default;
+}
+
+.mvc-lookup-table .mvc-lookup-empty:hover {
+    background: inherit;
+}
+
+.mvc-lookup-table .mvc-lookup-empty td {
+    font-weight: normal;
+}
+
+.mvc-lookup-table .mvc-lookup-empty td::after {
+    content: '';
+}
+
+.mvc-lookup-pager {
+    margin-top: 0.75em;
+    text-align: right;
+}
+
+.mvc-lookup-pager button + button {
+    margin-left: 0.25em;
+}
+
+.mvc-lookup-pager button {
+    transition: background-color 0.3s;
+    border: 1px solid #dee2e6;
+    box-sizing: border-box;
+    min-height: 2.5em;
+    line-height: 1.5;
+    background: none;
+    min-width: 2.5em;
+    padding: 0.25em;
+    cursor: pointer;
+    color: #777777;
+}
+
+.mvc-lookup-pager button:focus,
+.mvc-lookup-pager button:hover {
+    background: #eeeeee;
+}
+
+.mvc-lookup-pager .active,
+.mvc-lookup-pager .active:focus,
+.mvc-lookup-pager .active:hover {
+    border-color: rgba(30, 54, 101, 0.8);
+    background: #62759c;
+    color: #ffffff;
+}
+
+.mvc-lookup-autocomplete {
+    border: 1px solid #d3d3d3;
+    background: #ffffff;
+    margin-bottom: 1em;
+    position: absolute;
+    list-style: none;
+    cursor: pointer;
+    z-index: 1200;
+    padding: 0;
+}
+
+.mvc-lookup-autocomplete li {
+    padding: 0.25em 0.5em;
+}
+
+.mvc-lookup-autocomplete li.active {
+    border: 1px solid #aaaaaa;
+    margin: -1px;
+}
+
+@keyframes mvc-lookup-spin {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

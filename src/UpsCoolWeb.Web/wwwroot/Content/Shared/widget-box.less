@@ -1,0 +1,125 @@
+﻿.widget-box {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.33);
+    background-color: lighten(#f2f2f2, 3%);
+    border: 1px solid #cdcdcd;
+    margin-bottom: 15px;
+}
+
+.widget-header {
+    border-bottom: 1px solid #cdcdcd;
+    display: flex;
+    height: 2.5em;
+
+    .icon {
+        border-right: 1px solid #cdcdcd;
+        padding: 0 0.85em;
+        line-height: 2.5;
+    }
+
+    h5 {
+        font-weight: bold;
+        padding: 0 0.75em;
+        line-height: 2.5;
+        font-size: 1em;
+        height: 100%;
+        margin: 0;
+        flex: 1;
+    }
+
+    .widget-header-buttons {
+        display: flex;
+
+        .btn {
+            border-left: 1px solid #cdcdcd;
+            border-bottom: none;
+            line-height: 2.86;
+            font-size: 0.85em;
+            border-top: none;
+            border-radius: 0;
+            padding: 0 0.8em;
+            min-width: 3em;
+
+            &:hover {
+                background: linear-gradient(#6f93a7, #2a4e62);
+                color: #ffffff;
+            }
+
+            .text {
+                padding-left: 5px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .btn > span {
+                padding: 0;
+            }
+
+            .text {
+                display: none;
+            }
+        }
+    }
+}
+
+.widget-content {
+    overflow-x: auto;
+    width: 100%;
+
+    .form-group {
+        border-bottom: 1px solid #eeeeee;
+        border-top: 1px solid #ffffff;
+        flex-wrap: wrap;
+        display: flex;
+        padding: 10px;
+        margin: 0;
+        zoom: 1;
+
+        &:before,
+        &:after {
+            display: table;
+            content: " ";
+        }
+
+        &:after {
+            clear: both;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        textarea,
+        .input-group {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
+    .control-label {
+        text-align: left;
+    }
+
+    .form-actions {
+        text-align: center;
+    }
+
+    @media (min-width: 992px) {
+        .control-label {
+            text-align: right;
+        }
+
+        .control-validation {
+            text-align: center;
+        }
+
+        .form-actions {
+            text-align: right;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .control-validation {
+            text-align: left;
+        }
+    }
+}

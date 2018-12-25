@@ -1,0 +1,20 @@
+﻿{
+    "Areas": {
+        "Administration": "Administration"
+    },
+    "Controllers": {
+        "AdministrationAccounts": "Accounts",
+        "AdministrationRoles": "Roles"
+    },
+    "Actions": {
+        "AdministrationAccountsCreate": "Create",
+        "AdministrationAccountsDetails": "Details",
+        "AdministrationAccountsEdit": "Edit",
+        "AdministrationAccountsIndex": "Index",
+        "AdministrationRolesCreate": "Create",
+        "AdministrationRolesDelete": "Delete",
+        "AdministrationRolesDetails": "Details",
+        "AdministrationRolesEdit": "Edit",
+        "AdministrationRolesIndex": "Index"
+    }
+}

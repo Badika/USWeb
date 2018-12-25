@@ -1,0 +1,16 @@
+﻿/src/UpsCoolWeb.Web/wwwroot/Scripts/Application/**/*.min.js
+/src/UpsCoolWeb.Web/wwwroot/Scripts/Private/
+/src/UpsCoolWeb.Web/wwwroot/Scripts/Public/
+
+/src/UpsCoolWeb.Web/wwwroot/Content/Application/**/*.min.css
+/src/UpsCoolWeb.Web/wwwroot/Content/Private/
+/src/UpsCoolWeb.Web/wwwroot/Content/Public/
+/src/UpsCoolWeb.Web/Logs/
+node_modules/
+.vscode/
+.vs/
+bin/
+obj/
+
+*.user
+*.suo

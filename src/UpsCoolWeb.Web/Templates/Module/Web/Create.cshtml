@@ -1,0 +1,45 @@
+﻿@model ModuleModel
+@@model @Model.View
+
+<div class="col">
+    <div class="widget-box">
+        <div class="widget-header">
+            <span class="icon fa fa-th-list"></span>
+            <h5>@@Resource.ForPage("@(Model.Model)")</h5>
+        </div>
+        <div class="widget-content">
+            <form asp-antiforgery="true">
+                @foreach (PropertyInfo property in Model.Properties)
+                {
+                <div class="form-group">
+                    <div class="control-label col-md-3 col-lg-2">
+                        <label asp-for="@property.Name"></label>
+                    </div>
+                    <div class="control-content col-md-9 col-lg-5">
+                        @if (typeof(DateTime?).IsAssignableFrom(property.PropertyType))
+                        {
+                        <input asp-for="@property.Name" asp-format="{0:d}" class="datepicker" type="text" />
+                        }
+                        else if (Model.Relations[property] is String relation)
+                        {
+                        <div mvc-lookup-for="@property.Name" url="~/Lookup/@relation" title="@@Resource.ForLookup("@relation")"></div>
+                        }
+                        else
+                        {
+                        <input asp-for="@property.Name" />
+                        }
+                    </div>
+                    <div class="control-validation col">
+                        <span asp-validation-for="@property.Name"></span>
+                    </div>
+                </div>
+                }
+                <div class="form-group">
+                    <div class="form-actions col-lg-7">
+                        <button class="btn btn-primary">@@Resource.ForAction("Submit")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

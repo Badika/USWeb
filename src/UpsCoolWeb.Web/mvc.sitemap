@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+    <siteMapNode icon="fa fa-home" controller="Home" action="Index">
+        <siteMapNode icon="fa fa-ban" controller="Home" action="Error" />
+        <siteMapNode icon="fa fa-search" controller="Home" action="NotFound" />
+
+        <siteMapNode icon="fa fa-user-circle" controller="Profile" action="Edit" />
+        <siteMapNode icon="fa fa-user-times" controller="Profile" action="Delete" />
+
+        <siteMapNode menu="true" icon="fa fa-cogs" area="Administration">
+            <siteMapNode menu="true" icon="fa fa-user" area="Administration" controller="Accounts" action="Index">
+                <siteMapNode icon="far fa-file" area="Administration" controller="Accounts" action="Create" />
+                <siteMapNode icon="fa fa-info" area="Administration" controller="Accounts" action="Details" />
+                <siteMapNode icon="fa fa-pencil-alt" area="Administration" controller="Accounts" action="Edit" />
+            </siteMapNode>
+            <siteMapNode menu="true" icon="fa fa-users" area="Administration" controller="Roles" action="Index">
+                <siteMapNode icon="far fa-file" area="Administration" controller="Roles" action="Create" />
+                <siteMapNode icon="fa fa-info" area="Administration" controller="Roles" action="Details" />
+                <siteMapNode icon="fa fa-pencil-alt" area="Administration" controller="Roles" action="Edit" />
+                <siteMapNode icon="fa fa-times" area="Administration" controller="Roles" action="Delete" />
+            </siteMapNode>
+        </siteMapNode>
+    </siteMapNode>
+</siteMap>

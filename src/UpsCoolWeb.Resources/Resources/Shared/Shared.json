@@ -1,0 +1,26 @@
+﻿{
+    "Actions": {
+        "Copy": "Copy",
+        "Create": "Create",
+        "Delete": "Delete",
+        "Details": "Details",
+        "Edit": "Edit",
+        "Home":  "Home",
+        "Language": "Language",
+        "Login": "Login",
+        "Logout": "Logout",
+        "Profile": "Profile",
+        "Recover": "Recover",
+        "Search": "Search",
+        "Submit": "Submit"
+    },
+    "Strings": {
+        "All": "All",
+        "LostPassword": "Lost password?",
+        "No": "No",
+        "NoDataFound": "No data found",
+        "PageNotFound": "The page you are looking for does not exist",
+        "SystemError": "Your request resulted in an unexpected system failure",
+        "Yes": "Yes"
+    }
+}

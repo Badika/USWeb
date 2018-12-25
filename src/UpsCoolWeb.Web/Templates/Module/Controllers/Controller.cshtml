@@ -1,0 +1,83 @@
+﻿@model ModuleModel
+using Microsoft.AspNetCore.Mvc;
+using UpsCoolWeb.Components.Mvc;
+using UpsCoolWeb.Objects;
+using UpsCoolWeb.Services;
+using UpsCoolWeb.Validators;
+using System;
+
+namespace @Model.ControllerNamespace
+{
+    @if (!String.IsNullOrWhiteSpace(Model.Area))
+    {
+    @:[Area("@Model.Area")]
+    }
+    public class @Model.Controller : ValidatedController<@Model.IValidator, @Model.IService>
+    {
+        public @(Model.Controller)(@Model.IValidator validator, @Model.IService service)
+            : base(validator, service)
+        {
+        }
+
+        [HttpGet]
+        public ViewResult Index()
+        {
+            return View(Service.GetViews());
+        }
+
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create([BindExcludeId] @Model.View @Model.ModelVarName)
+        {
+            if (!Validator.CanCreate(@Model.ModelVarName))
+                return View(@Model.ModelVarName);
+
+            Service.Create(@Model.ModelVarName);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Details(Int32 id)
+        {
+            return NotEmptyView(Service.Get<@Model.View>(id));
+        }
+
+        [HttpGet]
+        public ActionResult Edit(Int32 id)
+        {
+            return NotEmptyView(Service.Get<@Model.View>(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(@Model.View @Model.ModelVarName)
+        {
+            if (!Validator.CanEdit(@Model.ModelVarName))
+                return View(@Model.ModelVarName);
+
+            Service.Edit(@Model.ModelVarName);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(Int32 id)
+        {
+            return NotEmptyView(Service.Get<@Model.View>(id));
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public RedirectToActionResult DeleteConfirmed(Int32 id)
+        {
+            Service.Delete(id);
+
+            return RedirectToAction("Index");
+        }
+    }
+}

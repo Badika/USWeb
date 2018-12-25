@@ -1,0 +1,10 @@
+﻿{
+    "Titles": {
+        "Id": "Role",
+        "Permissions": "Permissions",
+        "Title": "Title"
+    },
+    "Validations": {
+        "UniqueTitle": "Role title is already being used."
+    }
+}

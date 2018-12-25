@@ -1,0 +1,54 @@
+﻿@model ModuleModel
+@@model @Model.View
+
+<div class="col">
+    <div class="widget-box readonly">
+        <div class="widget-header">
+            <span class="icon fa fa-th-list"></span>
+            <h5>@@Resource.ForPage("@(Model.Model)")</h5>
+            <div class="widget-header-buttons">
+                <authorize action="Details">
+                    <a asp-action="Details" asp-route-id="@@Model.Id" class="btn">
+                        <span class="fa fa-info"></span><span class="text">@@Resource.ForAction("Details")</span>
+                    </a>
+                </authorize>
+                <authorize action="Edit">
+                    <a asp-action="Edit" asp-route-id="@@Model.Id" class="btn">
+                        <span class="fa fa-pencil-alt"></span><span class="text">@@Resource.ForAction("Edit")</span>
+                    </a>
+                </authorize>
+            </div>
+        </div>
+        <div class="widget-content">
+            @foreach (PropertyInfo property in Model.Properties)
+            {
+            <div class="form-group">
+                <div class="control-label col-md-3 col-lg-2">
+                    <label asp-for="@property.Name"></label>
+                </div>
+                <div class="control-content col-md-9 col-lg-5">
+                    @if (typeof(DateTime?).IsAssignableFrom(property.PropertyType))
+                    {
+                    <input asp-for="@property.Name" asp-format="{0:d}" class="datepicker" type="text" />
+                    }
+                    else if (Model.Relations[property] is String relation)
+                    {
+                    <div mvc-lookup-for="@property.Name" url="~/Lookup/@relation" title="@@Resource.ForLookup("@relation")"></div>
+                    }
+                    else
+                    {
+                    <input asp-for="@property.Name" />
+                    }
+                </div>
+            </div>
+            }
+            <form asp-antiforgery="true">
+                <div class="form-group">
+                    <div class="form-actions col-lg-7">
+                        <button class="btn btn-primary">@@Resource.ForAction("Submit")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
