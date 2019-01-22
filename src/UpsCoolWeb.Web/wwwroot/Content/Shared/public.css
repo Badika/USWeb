@@ -1,8 +1,8 @@
 body {
-  background-image: url("../../images/shared/content-background.jpg");
-  background-color: #f2f2f2;
-  font-size: 0.875rem;
-  color: #555555;
+    /*background-image: url("../../images/shared/content-background.jpg");*/
+    background-color: #fcf3cf;
+    font-size: 0.875rem;
+    color: #92a0a3;
 }
 .main-content {
   text-align: center;

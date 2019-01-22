@@ -60,15 +60,15 @@ hr {
   background-color: #eeeeee;
 }
 .btn-primary:not(:disabled):not(.disabled) {
-  background: linear-gradient(#84b2ca, #67a0be);
-  border: 1px solid #5997b8;
+    background: #92a0a3;
+    border: 1px solid #92a0a3;
 }
-.btn-primary:not(:disabled):not(.disabled):focus,
-.btn-primary:not(:disabled):not(.disabled):hover,
-.btn-primary:not(:disabled):not(.disabled):active {
-  background: linear-gradient(#75a9c4, #5997b8);
-  border: 1px solid #5997b8;
-}
+    .btn-primary:not(:disabled):not(.disabled):focus,
+    .btn-primary:not(:disabled):not(.disabled):hover,
+    .btn-primary:not(:disabled):not(.disabled):active {
+        background: #747B8C;
+        border: 1px solid #747B8C;
+    }
 .input-group .form-control {
   z-index: 1;
 }
@@ -214,9 +214,10 @@ hr {
   background: rgba(0, 0, 0, 0.03);
 }
 .mvc-grid-pager .active {
-  background: linear-gradient(#6f93a7, #2a4e62);
-  border-color: #59788a;
-  color: #ffffff;
+    background-image: linear-gradient(to right top, #800a3d, #b6353b, #df682e);
+    border-color: #df682e;
+    border-radius: 50%;
+    color: #ffffff;
 }
 .mvc-grid-popup {
   font-size: 1em;
